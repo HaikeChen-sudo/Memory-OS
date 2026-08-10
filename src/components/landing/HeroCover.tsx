@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { landingExit } from "@/animations";
 
 export function HeroCover() {
   return (
@@ -22,10 +21,7 @@ export function HeroCover() {
           </figcaption>
         </figure>
 
-        <section
-          className="relative flex min-h-[52vh] flex-col bg-[#12233A] px-6 py-6 text-[#E7E1D3] sm:px-10 lg:col-start-1 lg:row-start-1 lg:min-h-screen lg:px-12 lg:py-9"
-          {...landingExit}
-        >
+        <section className="relative flex min-h-[52vh] flex-col bg-[#12233A] px-6 py-6 text-[#E7E1D3] sm:px-10 lg:col-start-1 lg:row-start-1 lg:min-h-screen lg:px-12 lg:py-9">
           <header className="flex items-center justify-between font-mono text-[10px] tracking-[0.16em]">
             <span>MEMORY OS</span>
             <span className="text-[#E85327]">V0.2</span>

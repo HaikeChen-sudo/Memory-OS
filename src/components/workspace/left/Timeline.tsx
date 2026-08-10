@@ -3,7 +3,6 @@
 import type { TimeGroup } from "@/types";
 import { MemoryCard } from "./MemoryCard";
 import { TimeBadge } from "@/components/shared/TimeBadge";
-import { timelineStagger } from "@/animations";
 
 interface TimelineProps {
   groups: TimeGroup[];
@@ -20,7 +19,7 @@ export function Timeline({ groups }: TimelineProps) {
   }
 
   return (
-    <div className="flex flex-col" {...timelineStagger}>
+    <div className="flex flex-col">
       {groups.map((group) => (
         <div key={group.layer}>
           <TimeBadge label={group.label} count={group.memories.length} />

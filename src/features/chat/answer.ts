@@ -171,7 +171,7 @@ export async function answer(
     const finalPrompt = `${promptStr}\n\nUser: ${resolvedQuery}\nAssistant:`;
 
     rawResponse = await guardedCallLLM(
-      (p, t) => {
+      (_prompt, t) => {
         retryCount++;
         return callLLMWithMessages(ctxResult.messages, resolvedQuery, t);
       },

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import type { Memory } from "@/types";
 import { TypeIcon } from "@/components/shared/TypeIcon";
 import { useMemoryStore } from "@/stores/memoryStore";
-import { cardEnter, cardHover } from "@/animations";
 
 interface MemoryCardProps {
   memory: Memory;
@@ -96,8 +95,6 @@ export function MemoryCard({ memory }: MemoryCardProps) {
           ? "translate-x-1 bg-[#12233A] text-[#E7E1D3] shadow-[-4px_0_0_#E85327]"
           : "bg-[#D6D0C3] text-[#12233A] hover:bg-[#CBC4B7]"
       }`}
-      {...cardEnter}
-      {...cardHover}
     >
       <TypeIcon type={memory.type} className="mt-0.5 flex-shrink-0" />
 

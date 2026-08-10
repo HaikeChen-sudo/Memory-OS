@@ -13,7 +13,6 @@
     "benchmark:bm25": "PYTHONPATH=services/intelligence/src python3 -m memory_intelligence.cli benchmark experiments/datasets/retrieval_seed.v1.json --cutoff 5"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.106.1",
     "@tanstack/react-query": "^5.100.11",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",

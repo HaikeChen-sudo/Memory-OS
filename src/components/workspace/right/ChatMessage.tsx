@@ -1,7 +1,6 @@
 "use client";
 
 import type { Message } from "@/types";
-import { messageEnter } from "@/animations";
 
 interface ChatMessageProps {
   message: Message;
@@ -11,10 +10,7 @@ export function ChatMessage({ message }: ChatMessageProps) {
   const isUser = message.role === "user";
 
   return (
-    <div
-      className={`flex ${isUser ? "justify-end" : "justify-start"}`}
-      {...messageEnter}
-    >
+    <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
         className={`max-w-[85%] rounded-[4px] px-4 py-3 text-sm leading-relaxed ${
           isUser

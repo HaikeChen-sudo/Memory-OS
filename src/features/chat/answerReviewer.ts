@@ -20,7 +20,6 @@ export interface ReviewResult {
  */
 function fastCheck(
   answer: string,
-  sources: RetrievalResult[],
   query: string
 ): ReviewResult {
   const issues: string[] = [];
@@ -124,7 +123,7 @@ export async function reviewAnswer(
   callLLMFn: (prompt: string, temperature: number) => Promise<string>
 ): Promise<ReviewResult> {
   // Always do fast check
-  const fast = fastCheck(answer, sources, query);
+  const fast = fastCheck(answer, query);
 
   // For high-confidence responses, fast check is enough
   if (confidence >= 0.5 && fast.passed) {
@@ -138,6 +137,6 @@ export async function reviewAnswer(
   return {
     passed: deep.passed && fast.passed,
     issues: [...fast.issues, ...deep.issues],
-    correctedAnswer: deep.correctedAnswer || (!fast.passed ? undefined : undefined),
+    correctedAnswer: deep.correctedAnswer,
   };
 }
