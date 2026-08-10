@@ -1,0 +1,103 @@
+{
+  "dataset_id": "memory-os-retrieval-seed",
+  "version": "1",
+  "documents": [
+    {
+      "id": "event-lineage",
+      "text": "事件溯源把每次资料采集、解析、特征计算记录为不可变事件。事件包含 schema 版本、因果标识、内容哈希和数据血缘，因此可以从原始来源重放任意投影。",
+      "metadata": { "topic": "data-lineage", "language": "zh" }
+    },
+    {
+      "id": "bm25",
+      "text": "BM25 是经典稀疏检索算法。它使用词频、逆文档频率和文档长度归一化计算查询与文档的相关性，每个查询词都能解释自己的分数贡献。",
+      "metadata": { "topic": "retrieval", "language": "zh" }
+    },
+    {
+      "id": "dense-retrieval",
+      "text": "Dense retrieval encodes queries and chunks into embedding vectors. Approximate nearest-neighbor search retrieves semantically related evidence even when query terms do not overlap.",
+      "metadata": { "topic": "retrieval", "language": "en" }
+    },
+    {
+      "id": "rrf",
+      "text": "Reciprocal Rank Fusion 融合稀疏检索与向量检索的排名。RRF 不直接比较不同检索器的原始分数，而是根据候选文档在各列表中的名次累积得分。",
+      "metadata": { "topic": "retrieval", "language": "zh" }
+    },
+    {
+      "id": "graph-ranking",
+      "text": "知识图谱用节点表示实体和文档，用带权边表示关系观测。PageRank 能识别重要节点，桥接中心性用于找到连接不同社区的关键知识。",
+      "metadata": { "topic": "graph", "language": "zh" }
+    },
+    {
+      "id": "distribution-profile",
+      "text": "数据观测台使用 Shannon entropy 衡量模态多样性，使用 HHI 衡量集中度。两个统计量一起看，能区分数据丰富与单一来源堆积。",
+      "metadata": { "topic": "data-quality", "language": "zh" }
+    },
+    {
+      "id": "drift-detection",
+      "text": "数据漂移检测比较两个时间窗口的分布。PSI、Jensen-Shannon divergence 和 KS 检验提供不同的变化信号，变点检测用于定位变化发生的时间。",
+      "metadata": { "topic": "temporal", "language": "zh" }
+    },
+    {
+      "id": "evidence-rag",
+      "text": "证据型 RAG 把回答拆成 claim、evidence、retrieval score 和 confidence。引用必须指向原始片段；证据不足时系统拒答，而不是让语言模型补全事实。",
+      "metadata": { "topic": "rag", "language": "zh" }
+    },
+    {
+      "id": "local-first",
+      "text": "Local-first storage keeps the personal knowledge system usable without a server. IndexedDB stores browser projections, while an append-only ledger retains replayable events and content hashes.",
+      "metadata": { "topic": "storage", "language": "en" }
+    },
+    {
+      "id": "experiment-registry",
+      "text": "可复现实验需要固定 dataset snapshot、相关性标注、参数配置和代码版本。实验 registry 保存 run id、指标、延迟与 artifact，支持 baseline 和消融组比较。",
+      "metadata": { "topic": "evaluation", "language": "zh" }
+    },
+    {
+      "id": "minhash",
+      "text": "MinHash 近似估计集合的 Jaccard similarity，LSH 把相似签名放入候选桶。它把近重复检测从全量两两比较扩展到较大的文档集合。",
+      "metadata": { "topic": "deduplication", "language": "zh" }
+    },
+    {
+      "id": "calibration",
+      "text": "模型校准检查置信度与实际正确率是否一致。可靠性图、Brier score 和 expected calibration error 能发现过度自信，并为拒答阈值提供依据。",
+      "metadata": { "topic": "evaluation", "language": "zh" }
+    }
+  ],
+  "queries": [
+    {
+      "id": "q-lineage",
+      "text": "怎样追踪数据从原文到特征的版本和血缘",
+      "relevance": { "event-lineage": 3, "experiment-registry": 1 }
+    },
+    {
+      "id": "q-sparse",
+      "text": "稀疏检索怎样计算查询和文档相关性",
+      "relevance": { "bm25": 3, "rrf": 1 }
+    },
+    {
+      "id": "q-hybrid",
+      "text": "怎么融合关键词稀疏检索和向量检索排名",
+      "relevance": { "rrf": 3, "bm25": 2, "dense-retrieval": 2 }
+    },
+    {
+      "id": "q-duplicate",
+      "text": "大量文档怎么检测 Jaccard 近重复",
+      "relevance": { "minhash": 3 }
+    },
+    {
+      "id": "q-graph",
+      "text": "如何找知识图谱里的重要节点和桥接关系",
+      "relevance": { "graph-ranking": 3 }
+    },
+    {
+      "id": "q-drift",
+      "text": "怎样发现两个时间窗口的数据分布变化",
+      "relevance": { "drift-detection": 3, "distribution-profile": 1 }
+    },
+    {
+      "id": "q-evidence",
+      "text": "回答必须能追溯原始证据并在证据不足时拒答",
+      "relevance": { "evidence-rag": 3, "calibration": 1 }
+    }
+  ]
+}
